@@ -4,14 +4,15 @@ const Navbar = () => {
   return (
     <nav className={nav.nav}>
       <ul className={nav.links}>
-        <li><a href="">Profile</a></li>
-        <li><a href="">Message</a></li>
-        <li><a href="">News</a></li>
-        <li><a href="">Music</a></li>
-        <li><a href="">Settings</a></li>
+        <li className={nav.item__link}><a href="">Profile</a></li>
+        <li className={nav.item__link}><a href="">Message</a></li>
+        <li className={nav.item__link}><a href="">News</a></li>
+        <li className={nav.item__link}><a href="">Music</a></li>
+        <li className={nav.item__link}><a href="">Settings</a></li>
       </ul>
     </nav>
   )
 }
 
 export default Navbar;
+
