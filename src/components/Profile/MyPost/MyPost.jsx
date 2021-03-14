@@ -10,6 +10,16 @@ const MyPost = () => {
         <button>ADD POST</button>
       </div>
       <div>
+        <Post
+          message="Hello, how are you?"
+          likes="2"
+        />
+        <Post
+          message="Hi, this is my first POST ))"
+          likes="1"
+        />
+        <Post/>
+        <Post/>
         <Post/>
         <Post/>
       </div>
