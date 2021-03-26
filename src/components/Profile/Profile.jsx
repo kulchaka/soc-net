@@ -4,7 +4,7 @@ import prof from './Profile.module.css'
 
 const Profile = () => {
   return (
-    <main className={prof.content}>
+    <main>
       <div>
         <img
           className={prof.prof__img}
