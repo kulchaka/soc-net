@@ -4,14 +4,23 @@
 
 }
 
+.item__link {
+ padding: 10px;
+}
+
 .item__link:hover {
   background-color: #00579b;
   color: white;
 }
 
-.item__link_active {
-  background-color: dimgrey;
-  color: black;
+.item__link a.active {
+  background-color: #00579b;
+  color: white;
+}
+
+.item__link:active {
+  background-color: #0a3d53;
+  color: white;
 }
 
 a {

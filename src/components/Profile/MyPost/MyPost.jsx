@@ -1,27 +1,38 @@
-import mypost from './MyPost.module.css'
 import Post from "./Post/Post";
+import ProfInfo from "../ProfInfo/ProfInfo";
 
 const MyPost = () => {
+
+  const postsData = [
+    {
+      id: '01',
+      text: 'Hello, how are you?',
+      likesCount: '2'
+    },
+    {
+      id: '02',
+      text: "Hi, this is my first POST ))",
+      likesCount: '5'
+    },
+    {
+      id: '03',
+      text: "Bye!"
+    }
+  ];
+
   return (
     <>
+  <ProfInfo />
       <div>
-        <h3>My post</h3>
-        <textarea name="" id="" cols="30" rows="2"></textarea>
-        <button>ADD POST</button>
-      </div>
-      <div>
-        <Post
-          message="Hello, how are you?"
-          likes="2"
-        />
-        <Post
-          message="Hi, this is my first POST ))"
-          likes="1"
-        />
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
+        {
+          postsData.map(({id, text, likesCount}) => (
+            <Post
+              text={text}
+              likesCount={likesCount}
+              key={id}
+            />
+            ))
+        }
       </div>
     </>
   )

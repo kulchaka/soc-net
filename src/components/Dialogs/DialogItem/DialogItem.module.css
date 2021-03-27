@@ -1,0 +1,7 @@
+.dialog__name {
+  padding: 10px;
+}
+
+.dialog__link:hover {
+  color: #0a3d53;
+}

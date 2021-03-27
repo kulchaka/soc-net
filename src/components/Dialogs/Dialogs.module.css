@@ -1,3 +1,23 @@
 h1 {
   color: darkblue;
 }
+
+.dialogs {
+  display: flex;
+  padding: 10px;
+}
+
+.dialog__items {
+  flex-basis: 30%;
+}
+
+
+.dialog__name_active {
+  color: #00579b;
+}
+
+.messages {
+  flex-basis: 70%;
+  margin-left: 30px;
+}
+
