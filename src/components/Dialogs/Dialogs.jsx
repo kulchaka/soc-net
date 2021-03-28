@@ -1,39 +1,9 @@
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Messages from "./Messages/Messages";
+import {Route} from "react-router-dom";
 
 const Dialogs = (props) => {
-
-  const dialogsData = [
-    {
-      id: '01',
-      name: 'John'
-    },
-    {
-      id: '02',
-      name: "Andrii"
-    },
-    {
-      id: '03',
-      name: "Peter"
-    }
-  ];
-
-  const messagesData = [
-    {
-      id: '01',
-      message: 'Hello'
-    },
-    {
-      id: '02',
-      message: "How are you?!"
-    },
-    {
-      id: '03',
-      message: "Yo!"
-    }
-  ];
-
 
   return (
     <>
@@ -41,7 +11,7 @@ const Dialogs = (props) => {
       <div className={s.dialogs}>
         <div className={s.dialog__items}>
           {
-            dialogsData.map(({id, name}) => (
+            props.dialog.map(({id, name}) => (
               <DialogItem
                 id={id}
                 name={name}
@@ -51,8 +21,18 @@ const Dialogs = (props) => {
           }
         </div>
         <div className={s.messages}>
+          {/*<Route path='/dialogs/01'>*/}
+          {/*  {*/}
+
+          {/*      <Messages*/}
+          {/*        text={props.msgs[0].message}*/}
+          {/*      />*/}
+
+          {/*  }*/}
+          {/*</Route>*/}
+
           {
-            messagesData.map(({id, message}) => (
+            props.msgs.map(({id, message}) => (
               <Messages
                 text={message}
                 key={id}
