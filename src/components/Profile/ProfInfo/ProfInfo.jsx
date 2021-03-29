@@ -1,9 +1,13 @@
+import React from "react";
 import s from "../Profile.module.css";
 
 const ProfInfo = () => {
 
+  const texAreaRef = React.createRef();
+
   const alertPostBtn = () => {
-    alert('Alert Post')
+    alert(texAreaRef.current.value)
+    texAreaRef.current.value = ''
   }
 
   return (
@@ -18,7 +22,7 @@ const ProfInfo = () => {
         ava + dcrp
       </div>
       <h3>My post</h3>
-      <textarea name="" id="" cols="30" rows="2"></textarea>
+      <textarea ref={texAreaRef} name="" id="" cols="30" rows="2"></textarea>
       <button onClick={alertPostBtn}>ADD POST</button>
     </>
   )
