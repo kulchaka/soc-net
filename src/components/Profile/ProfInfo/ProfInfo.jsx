@@ -14,7 +14,7 @@ const ProfInfo = () => {
       </div>
       <h3>My post</h3>
       <textarea name="" id="" cols="30" rows="2"></textarea>
-      <button>ADD POST</button>
+      <button onClick={() => {alert('Add post!')}}>ADD POST</button>
     </>
   )
 }

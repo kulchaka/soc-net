@@ -38,3 +38,7 @@ a:hover {
   padding: 10px;
   list-style-type: none;
 }
+
+.friend__logo {
+  text-align: center;
+}

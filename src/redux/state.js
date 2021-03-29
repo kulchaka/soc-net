@@ -29,24 +29,24 @@ const state = {
       }
     ]
   },
- profilePage: {
-   postsData: [
-     {
-       id: '01',
-       text: 'Hello, how are you?',
-       likesCount: '2'
-     },
-     {
-       id: '02',
-       text: "Hi, this is my first POST ))",
-       likesCount: '5'
-     },
-     {
-       id: '03',
-       text: "Bye!"
-     }
-   ]
- }
+  profilePage: {
+    postsData: [
+      {
+        id: '01',
+        text: 'Hello, how are you?',
+        likesCount: '2'
+      },
+      {
+        id: '02',
+        text: "Hi, this is my first POST ))",
+        likesCount: '5'
+      },
+      {
+        id: '03',
+        text: "Bye!"
+      }
+    ]
+  }
 
 }
 
