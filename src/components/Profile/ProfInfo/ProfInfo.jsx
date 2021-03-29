@@ -1,6 +1,11 @@
 import s from "../Profile.module.css";
 
 const ProfInfo = () => {
+
+  const alertPostBtn = () => {
+    alert('Alert Post')
+  }
+
   return (
     <>
       <div>
@@ -14,7 +19,7 @@ const ProfInfo = () => {
       </div>
       <h3>My post</h3>
       <textarea name="" id="" cols="30" rows="2"></textarea>
-      <button onClick={() => {alert('Add post!')}}>ADD POST</button>
+      <button onClick={alertPostBtn}>ADD POST</button>
     </>
   )
 }
