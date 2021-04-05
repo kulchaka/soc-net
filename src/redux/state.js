@@ -56,11 +56,17 @@ const state = {
 
 export const addPost = (text) => {
   const newPost = {
-    id: '02',
-    text: text,
+    id: '04',
+    text: state.profilePage.textArea,
     likesCount: '0'
   }
   state.profilePage.postsData.push(newPost)
+  state.profilePage.textArea = ''
+  rerenderTree(state)
+}
+
+export const postChange = (text) => {
+  state.profilePage.textArea = text;
   rerenderTree(state)
 }
 
