@@ -1,3 +1,6 @@
+import {rerenderTree} from "../render";
+
+
 const state = {
   dialogsPage: {
     dialogsData: [
@@ -45,9 +48,20 @@ const state = {
         id: '03',
         text: "Bye!"
       }
-    ]
+    ],
+    textArea: 'enter text'
   }
 
+}
+
+export const addPost = (text) => {
+  const newPost = {
+    id: '02',
+    text: text,
+    likesCount: '0'
+  }
+  state.profilePage.postsData.push(newPost)
+  rerenderTree(state)
 }
 
 export default state;
