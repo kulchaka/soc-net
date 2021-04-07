@@ -1,5 +1,6 @@
-import {rerenderTree} from "../render";
-
+let rerenderTree = () => {
+  console.log('state chg')
+}
 
 const state = {
   dialogsPage: {
@@ -68,6 +69,10 @@ export const addPost = (text) => {
 export const postChange = (text) => {
   state.profilePage.textArea = text;
   rerenderTree(state)
+}
+
+export const subscribe = (observer) => {
+  rerenderTree = observer
 }
 
 export default state;
