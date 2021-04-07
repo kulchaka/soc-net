@@ -2,7 +2,6 @@ import Post from "./Post/Post";
 
 
 const MyPost = (props) => {
-
   return (
     <>
       <div>
