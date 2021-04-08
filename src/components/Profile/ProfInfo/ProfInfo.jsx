@@ -1,16 +1,30 @@
 import React from "react";
 import s from "../Profile.module.css";
 
+const addPostActionCreator = () => {
+  return {
+    type: 'ADD-POST'
+  }
+}
+
+const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: 'POST-UPDATE',
+    newText: text
+  }
+}
+
 const ProfInfo = (props) => {
 
   const texAreaRef = React.createRef();
 
   const addPost = () => {
-    props.dispatch({type: 'ADD-POST'})
+    props.dispatch(addPostActionCreator())
   }
 
   const updatePost = () => {
-      props.dispatch({type: 'POST-UPDATE', text: texAreaRef.current.value})
+    const text = texAreaRef.current.value;
+    props.dispatch(updateNewPostTextActionCreator(text))
   }
 
   return (

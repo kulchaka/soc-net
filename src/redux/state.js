@@ -140,12 +140,6 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer
   },
-  addPost() {
-
-  },
-  postChange(text){
-
-  },
   dispatch(action) {
     if (action.type === 'ADD-POST') {
       const newPost = {
@@ -157,7 +151,7 @@ let store = {
       this._state.profilePage.textArea = ''
       this._callSubscriber(this._state)
     } else if (action.type === 'POST-UPDATE') {
-      this._state.profilePage.textArea = action.text;
+      this._state.profilePage.textArea = action.newText;
       this._callSubscriber(this._state)
     }
   }
