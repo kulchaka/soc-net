@@ -1,18 +1,7 @@
 import React from "react";
 import s from "../Profile.module.css";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
 
-const addPostActionCreator = () => {
-  return {
-    type: 'ADD-POST'
-  }
-}
-
-const updateNewPostTextActionCreator = (text) => {
-  return {
-    type: 'POST-UPDATE',
-    newText: text
-  }
-}
 
 const ProfInfo = (props) => {
 
