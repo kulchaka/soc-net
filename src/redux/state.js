@@ -131,30 +131,36 @@ let store = {
     }
 
   },
-  getState() {
-    return this._state;
-  },
   _callSubscriber() {
     console.log('state chg')
   },
-  addPost() {
-    const newPost = {
-      id: '04',
-      text: this._state.profilePage.textArea,
-      likesCount: '0'
-    }
-    this._state.profilePage.postsData.push(newPost)
-    this._state.profilePage.textArea = ''
-    this._callSubscriber(this._state)
-  },
-  postChange(text){
-    this._state.profilePage.textArea = text;
-    this._callSubscriber(this._state)
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer
   },
+  addPost() {
 
+  },
+  postChange(text){
+
+  },
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      const newPost = {
+        id: '04',
+        text: this._state.profilePage.textArea,
+        likesCount: '0'
+      }
+      this._state.profilePage.postsData.push(newPost)
+      this._state.profilePage.textArea = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'POST-UPDATE') {
+      this._state.profilePage.textArea = action.text;
+      this._callSubscriber(this._state)
+    }
+  }
 }
 
 export default store;

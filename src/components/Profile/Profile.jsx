@@ -7,7 +7,7 @@ import ProfInfo from "./ProfInfo/ProfInfo";
 const Profile = (props) => {
   return (
     <main className={s.mainBlock}>
-      <ProfInfo textArea={props.textArea} postChange = {props.postChange} addPost={props.addPost}/>
+      <ProfInfo textArea={props.textArea} dispatch={props.dispatch}/>
       <MyPost posts={props.posts} />
     </main>
   )

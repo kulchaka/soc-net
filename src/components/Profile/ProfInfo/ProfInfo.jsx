@@ -5,12 +5,12 @@ const ProfInfo = (props) => {
 
   const texAreaRef = React.createRef();
 
-  const alertPostBtn = () => {
-    props.addPost()
+  const addPost = () => {
+    props.dispatch({type: 'ADD-POST'})
   }
 
-  const postChange = () => {
-      props.postChange(texAreaRef.current.value)
+  const updatePost = () => {
+      props.dispatch({type: 'POST-UPDATE', text: texAreaRef.current.value})
   }
 
   return (
@@ -25,8 +25,8 @@ const ProfInfo = (props) => {
         ava + dcrp
       </div>
       <h3>My post</h3>
-      <textarea ref={texAreaRef} name="" id="" cols="30" rows="2" onChange={postChange} value={props.textArea} />
-      <button onClick={alertPostBtn}>ADD POST</button>
+      <textarea ref={texAreaRef} name="" id="" cols="30" rows="2" onChange={updatePost} value={props.textArea} />
+      <button onClick={addPost}>ADD POST</button>
     </>
   )
 }
