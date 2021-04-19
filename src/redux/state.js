@@ -1,6 +1,11 @@
 //store - OOP
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+
 const ADD_POST = 'ADD-POST';
 const POST_UPDATE = 'POST-UPDATE';
+const MESSAGE_UPDATE = 'MESSAGE_UPDATE';
+const ADD_MESSAGE = 'ADD_MESSAGE';
 
 let store = {
   _state: {
@@ -32,7 +37,8 @@ let store = {
           id: '03',
           message: "Yo!"
         }
-      ]
+      ],
+      newMessageText: ''
     },
     profilePage: {
       postsData: [
@@ -65,30 +71,11 @@ let store = {
     this._callSubscriber = observer
   },
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      const newPost = {
-        id: '04',
-        text: this._state.profilePage.textArea,
-        likesCount: '0'
-      }
-      this._state.profilePage.postsData.push(newPost)
-      this._state.profilePage.textArea = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === 'POST-UPDATE') {
-      this._state.profilePage.textArea = action.newText;
-      this._callSubscriber(this._state)
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._callSubscriber(this._state)
   }
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-
-
-export const updateNewPostTextActionCreator = (text) => ({
-    type: POST_UPDATE,
-    newText: text
-  }
-);
 
 export default store;
 window.store = store
