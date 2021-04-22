@@ -5,7 +5,7 @@ import {sendMessageCreator, updateMessageBodyCreator} from "../../redux/dialogsR
 // import {Route} from "react-router-dom";
 
 const Dialogs = (props) => {
-
+  // console.log(props)
   const dialogsEl = props.dialogData.dialogsData.map(({id, name}) => (
     <DialogItem
       id={id}

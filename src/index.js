@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import ReactDOM from "react-dom";
 import App from "./App";
-import store from "./redux/store";
+import store from "./redux/redux-store";
 
 const rerenderTree = (state) => {
   ReactDOM.render(
@@ -18,7 +18,10 @@ const rerenderTree = (state) => {
 
 rerenderTree(store.getState());
 
-store.subscribe(rerenderTree)
+store.subscribe(() => {
+  const state = store.getState();
+  rerenderTree(state)
+})
 
 
 // If you want to start measuring performance in your app, pass a function
