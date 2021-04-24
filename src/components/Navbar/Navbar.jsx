@@ -1,6 +1,6 @@
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import post from "../Profile/MyPost/Post/Post.module.css";
+import post from "../Profile/MyPosts/Post/Post.module.css";
 
 const Navbar = () => {
   return (
