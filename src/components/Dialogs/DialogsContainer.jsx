@@ -2,7 +2,7 @@ import {sendMessageCreator, updateMessageBodyCreator} from "../../redux/dialogsR
 import Dialogs from "./Dialogs";
 import StoreContext from "../../StoreContext";
 
-const DialogsContainer = (props) => {
+const DialogsContainer = () => {
 
 
   return (

@@ -6,7 +6,7 @@ import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
 import StoreContext from "./StoreContext";
 
-const rerenderTree = (state) => {
+const rerenderTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <StoreContext.Provider value={store}>
@@ -18,11 +18,10 @@ const rerenderTree = (state) => {
 }
 
 
-rerenderTree(store.getState());
+rerenderTree();
 
 store.subscribe(() => {
-  const state = store.getState();
-  rerenderTree(state)
+  rerenderTree()
 })
 
 
