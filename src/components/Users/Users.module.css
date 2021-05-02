@@ -1,12 +1,16 @@
 .block {
   display: flex;
   align-items: center;
+  border: 1px solid #00579b;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+
 }
 
 .block__logo {
   display: flex;
   flex-direction: column;
-  padding: 20px;
 }
 .logo {
   border-radius: 50%;
@@ -14,6 +18,7 @@
   height: 100px;
 }
 button {
+  margin-top: 5px;
   cursor: pointer;
 }
 
