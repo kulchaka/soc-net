@@ -1,10 +1,26 @@
 import React from "react";
+import s from './Users.module.css'
 
-const Users = () => {
+const Users = (props) => {
+  console.log(props)
   return (
-    <>
-      <h1>USERS</h1>
-    </>
+        props.users.map(u =>
+          <div key={u.id} className={s.block}>
+            <div className={s.block__logo}>
+              <img src={u.logoUrl} alt="logo" className={s.logo}/>
+              <button className={s.button}>FOLLOW</button>
+            </div>
+            <div className={s.block__info}>
+              <div className={s.block__name}>
+                <p className={s.name}>{u.name}</p>
+                <p className={s.status}>{u.status}</p>
+              </div>
+              <div className={s.block__location}>
+                <p className={s.country}>{u.location.country}</p>
+                <p className={s.city}>{u.location.city}</p>
+              </div>
+            </div>
+          </div>)
   )
 }
 

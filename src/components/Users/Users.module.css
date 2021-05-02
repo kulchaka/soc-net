@@ -1,0 +1,24 @@
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.block__logo {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.logo {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+button {
+  cursor: pointer;
+}
+
+.block__info {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
