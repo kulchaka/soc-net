@@ -8,6 +8,11 @@
 
 }
 
+.block:hover {
+  border: 2px solid #00819b;
+  background-color: #dfecf4;
+}
+
 .block__logo {
   display: flex;
   flex-direction: column;
