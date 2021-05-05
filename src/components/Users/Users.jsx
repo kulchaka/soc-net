@@ -6,20 +6,15 @@ import userLogo from '../../assets/img/logo.png'
 
 class Users extends React.Component {
 
-  getUsers = () => {
-    if (this.props.users.length === 0) {
-
-      axios.get('https://social-network.samuraijs.com/api/1.0/users')
-        .then(response => {
-          console.log(response.data.items)
-          this.props.setUsers(response.data.items)
-        })
-    }
+  componentDidMount() {
+    axios.get('https://social-network.samuraijs.com/api/1.0/users')
+      .then(response => {
+        this.props.setUsers(response.data.items)
+      })
   }
 
   render() {
     return <>
-      <button onClick={this.getUsers}>Get State</button>
       {
         this.props.users.map(u =>
           <div key={u.id} className={s.block}>
