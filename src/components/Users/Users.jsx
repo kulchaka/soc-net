@@ -9,12 +9,33 @@ class Users extends React.Component {
   componentDidMount() {
     axios.get('https://social-network.samuraijs.com/api/1.0/users')
       .then(response => {
+        // console.log(response, 'response')
         this.props.setUsers(response.data.items)
+        // this.props.setTotalCount(response.data.totalCount)
       })
   }
 
   render() {
+
+    const pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+    const pagesArr = []
+    for (let i = 1; i <= pagesCount; i++) {
+      pagesArr.push(i)
+    }
+
+    console.log(pagesArr)
+
+    console.log(this.props, 'PROPS USERS')
     return <>
+      <div className={s.pages}>
+        <>
+          {
+            pagesArr.map(e => {
+              return <span className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}` } key={e}> {e} </span>
+            })
+          }
+        </>
+      </div>
       {
         this.props.users.map(u =>
           <div key={u.id} className={s.block}>
@@ -42,6 +63,15 @@ class Users extends React.Component {
             </div>
           </div>)
       }
+      <div className={s.pages}>
+        <>
+          {
+            pagesArr.map(e => {
+              return <span className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}` } key={e}> {e} </span>
+            })
+          }
+        </>
+      </div>
     </>
   }
 }

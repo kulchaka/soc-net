@@ -32,3 +32,26 @@ button {
   width: 100%;
   justify-content: space-around;
 }
+
+.pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.numpages {
+  cursor: pointer ;
+  color: #00579b;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.numpages:hover {
+  font-weight: bolder;
+  color: #0a3d53;
+}
+
+.numpages_selected {
+  color: black;
+  font-weight: bold;
+  cursor: default;
+}
