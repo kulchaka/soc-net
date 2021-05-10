@@ -2,16 +2,17 @@ const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-// const SET_TOTAL = 'SET_TOTAL'
+const SET_TOTAL = 'SET_TOTAL'
 
 const initState = {
   users: [],
   pageSize: 10,
-  totalUserCount: 21,
+  totalUserCount: 0,
   currentPage: 1
 }
 
 const usersReducer = (state = initState, action) => {
+  console.log(action)
   switch (action.type) {
     case FOLLOW:
       return {
@@ -42,10 +43,11 @@ const usersReducer = (state = initState, action) => {
       return {
         ...state, currentPage: action.currentPage
       }
-    // case SET_TOTAL:
-    //   return {
-    //     ...state, totalCount: action.total
-    //   }
+    case SET_TOTAL:
+      console.log(action)
+      return {
+        ...state, totalUserCount: action.totalUserCount
+      }
     default:
       return state;
   }
@@ -76,12 +78,12 @@ export const setCurrentPageAC = (currentPage) => (
     currentPage
   }
 )
-// export const setTotalCount = (totalCount) => (
-//   {
-//     type: SET_TOTAL,
-//     total: totalCount
-//   }
-// )
+export const setTotalCountAC = (totalCount) => (
+  {
+    type: SET_TOTAL,
+    totalUserCount: totalCount
+  }
+)
 
 
 export default usersReducer
