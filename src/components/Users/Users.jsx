@@ -7,7 +7,7 @@ import userLogo from '../../assets/img/logo.png'
 class Users extends React.Component {
 
   componentDidMount() {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users')
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
       .then(response => {
         // console.log(response, 'response')
         this.props.setUsers(response.data.items)
@@ -31,7 +31,14 @@ class Users extends React.Component {
         <>
           {
             pagesArr.map(e => {
-              return <span className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}` } key={e}> {e} </span>
+              return <span
+                className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}`} key={e}
+                onClick={() => {
+                  this.props.setCurrentPage(e)
+                }}
+              >
+                {e}
+              </span>
             })
           }
         </>
@@ -67,7 +74,8 @@ class Users extends React.Component {
         <>
           {
             pagesArr.map(e => {
-              return <span className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}` } key={e}> {e} </span>
+              return <span className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}`}
+                           key={e}> {e} </span>
             })
           }
         </>

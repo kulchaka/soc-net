@@ -54,4 +54,6 @@ button {
   color: black;
   font-weight: bold;
   cursor: default;
+  margin-left: 5px;
+  margin-right: 5px;
 }
