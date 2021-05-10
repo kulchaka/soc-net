@@ -15,6 +15,16 @@ class Users extends React.Component {
       })
   }
 
+  onPageChanged = (currentPage) => {
+    this.props.setCurrentPage(currentPage)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
+      .then(response => {
+        // console.log(response, 'response')
+        this.props.setUsers(response.data.items)
+        // this.props.setTotalCount(response.data.totalCount)
+      })
+  }
+
   render() {
 
     const pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
@@ -23,9 +33,6 @@ class Users extends React.Component {
       pagesArr.push(i)
     }
 
-    console.log(pagesArr)
-
-    console.log(this.props, 'PROPS USERS')
     return <>
       <div className={s.pages}>
         <>
@@ -34,7 +41,7 @@ class Users extends React.Component {
               return <span
                 className={this.props.currentPage == e ? `${s.numpages_selected}` : `${s.numpages}`} key={e}
                 onClick={() => {
-                  this.props.setCurrentPage(e)
+                  this.onPageChanged(e)
                 }}
               >
                 {e}
