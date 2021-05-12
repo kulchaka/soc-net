@@ -12,7 +12,6 @@ const initState = {
 }
 
 const usersReducer = (state = initState, action) => {
-  console.log(action)
   switch (action.type) {
     case FOLLOW:
       return {
@@ -44,7 +43,6 @@ const usersReducer = (state = initState, action) => {
         ...state, currentPage: action.currentPage
       }
     case SET_TOTAL:
-      console.log(action)
       return {
         ...state, totalUserCount: action.totalUserCount
       }
