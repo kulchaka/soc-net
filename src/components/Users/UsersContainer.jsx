@@ -10,7 +10,7 @@ import {
 } from "../../redux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
-import loader from './../../assets/img/spinnerLoad.svg'
+import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -36,8 +36,9 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? <img src={loader} alt="loader"/> : null}
+        {this.props.isFetching ? <SpinnerLoading /> : null}
         <Users
+          isLoader={this.props.isFetching}
           totalUserCount={this.props.totalUserCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
@@ -49,19 +50,25 @@ class UsersContainer extends React.Component {
       </>
     )
   }
+
 }
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUserCount: state.usersPage.totalUserCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
-  }
+  users: state.usersPage.users
+,
+  pageSize: state.usersPage.pageSize
+,
+  totalUserCount: state.usersPage.totalUserCount
+,
+  currentPage: state.usersPage.currentPage
+,
+  isFetching: state.usersPage.isFetching
+}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) =>
+{
   return {
     follow: (usersId) => {
       dispatch(followAC(usersId))

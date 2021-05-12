@@ -8,6 +8,16 @@
 
 }
 
+.block_opacity {
+  display: flex;
+  align-items: center;
+  border: 2px solid #00579b;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  opacity: 0.5;
+}
+
 .block:hover {
   border: 2px solid #00819b;
   background-color: #dfecf4;

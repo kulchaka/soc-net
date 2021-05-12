@@ -4,6 +4,7 @@ import s from './Users.module.css'
 
 
 const Users = (props) => {
+  console.log(props)
   const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
   const pagesArr = []
   for (let i = 1; i <= pagesCount; i++) {
@@ -30,7 +31,7 @@ const Users = (props) => {
       </div>
       {
         props.users.map(u =>
-          <div key={u.id} className={s.block}>
+          <div key={u.id} className={props.isLoader ? `${s.block_opacity}` : `${s.block}`}>
             <div className={s.block__logo}>
               <img src={u.photos.small != null ? u.photos.small : userLogo} alt="logo" className={s.logo}/>
               {
