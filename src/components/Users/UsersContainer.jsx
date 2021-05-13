@@ -36,7 +36,7 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? <SpinnerLoading /> : null}
+        {this.props.isFetching ? <SpinnerLoading/> : null}
         <Users
           isLoader={this.props.isFetching}
           totalUserCount={this.props.totalUserCount}
@@ -55,41 +55,25 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-  users: state.usersPage.users
-,
-  pageSize: state.usersPage.pageSize
-,
-  totalUserCount: state.usersPage.totalUserCount
-,
-  currentPage: state.usersPage.currentPage
-,
-  isFetching: state.usersPage.isFetching
-}
-}
-
-const mapDispatchToProps = (dispatch) =>
-{
-  return {
-    follow: (usersId) => {
-      dispatch(followAC(usersId))
-    },
-    unfollow: (usersId) => {
-      dispatch(unfollowAC(usersId))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (currentPage) => {
-      dispatch(setCurrentPageAC(currentPage))
-    },
-    setTotalCount: (totalCount) => {
-      dispatch(setTotalCountAC(totalCount))
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingAC(isFetching))
-    }
+    users: state.usersPage.users
+    ,
+    pageSize: state.usersPage.pageSize
+    ,
+    totalUserCount: state.usersPage.totalUserCount
+    ,
+    currentPage: state.usersPage.currentPage
+    ,
+    isFetching: state.usersPage.isFetching
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+
+export default connect(mapStateToProps, {
+  follow: followAC,
+  unfollow: unfollowAC,
+  setUsers: setUsersAC,
+  setCurrentPage: setCurrentPageAC,
+  setTotalCount: setTotalCountAC,
+  toggleIsFetching: toggleIsFetchingAC
+})(UsersContainer)
 
