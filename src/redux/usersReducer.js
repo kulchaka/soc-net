@@ -57,6 +57,7 @@ const usersReducer = (state = initState, action) => {
   }
 }
 
+//Action Creators
 export const follow = (userId) => (
   {
     type: FOLLOW,
