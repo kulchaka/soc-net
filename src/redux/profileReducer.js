@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const POST_UPDATE = 'POST-UPDATE';
+const SET_PROFILE = 'SET-PROFILE';
 
 const initState = {
   postsData: [
@@ -18,7 +19,8 @@ const initState = {
       text: "Bye!"
     }
   ],
-  textArea: 'enter text'
+  textArea: 'enter text',
+  profile: null
 }
 
 const profileReducer = (state = initState, action) => {
@@ -39,6 +41,11 @@ const profileReducer = (state = initState, action) => {
         ...state,
         textArea: action.newText
       }
+    case SET_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
     default:
       return state;
   }
@@ -50,5 +57,6 @@ export const updateNewPostTextActionCreator = (text) => ({
     newText: text
   }
 );
+export const setUserProfileActionCreator = (profile) => ({type: SET_PROFILE, profile});
 
 export default profileReducer;
