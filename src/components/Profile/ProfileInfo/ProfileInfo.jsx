@@ -2,10 +2,11 @@ import s from './ProfileInfo.module.css'
 import SpinnerLoading from "../../SpinnerLoading/SpinnerLoading";
 
 const ProfileInfo = (props) => {
+
   if (!props.profile) {
     return <SpinnerLoading />
   }
-  console.log(props)
+
   return (
     <div>
       <div>
