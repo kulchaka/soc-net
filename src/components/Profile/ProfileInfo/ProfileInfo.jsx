@@ -15,7 +15,7 @@ const ProfileInfo = (props) => {
           src='https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'/>
       </div>
       <div >
-        {<img src={props.profile.photos.small} alt="pic"/>}
+        {<img src={props.profile.photos.large} alt="pic"/>}
         <p>{props.profile.fullName}</p>
         <p>{props.profile.aboutMe}</p>
       </div>
