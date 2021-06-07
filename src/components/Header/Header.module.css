@@ -3,6 +3,21 @@
   background-color: #00579b;
 }
 
+.header__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.header__login a {
+  color: #dfecf4;
+}
+.header__login a:hover {
+  color: #faa626;
+}
+
 .header__img {
   width: 60px;
   height: 60px;
