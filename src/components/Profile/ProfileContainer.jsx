@@ -8,7 +8,6 @@ import {withRouter} from 'react-router-dom'
 class ProfileContainer extends React.Component{
 
   componentDidMount() {
-    console.log(this.props.match.params.userID)
 
     let userID = this.props.match.params.userID
 
