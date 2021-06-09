@@ -11,17 +11,16 @@ import {
 import * as axios from "axios";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
+import {getUserAPI} from "../../API/API";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    })
-      .then(response => {
+    getUserAPI()
+      .then(data => {
         this.props.toggleIsFetching(false)
-        this.props.setUsers(response.data.items)
-        this.props.setTotalCount(response.data.totalCount > 200 ? 199 : response.data.totalCount)
+        this.props.setUsers(data.items)
+        this.props.setTotalCount(data.totalCount > 200 ? 199 : data.totalCount)
       })
   }
 
