@@ -10,12 +10,13 @@ import {
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
-import {getUserAPI} from "../../API/API";
+import {usersAPI} from "../../API/API";
+
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true)
-    getUserAPI(this.props.currentPage, this.props.pageSize)
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
       .then(data => {
         this.props.toggleIsFetching(false)
         this.props.setUsers(data.items)
@@ -26,7 +27,7 @@ class UsersContainer extends React.Component {
   onPageChanged = (currentPage) => {
     this.props.setCurrentPage(currentPage)
     this.props.toggleIsFetching(true)
-   getUserAPI(currentPage, this.props.pageSize)
+   usersAPI.getUsers(currentPage, this.props.pageSize)
       .then(data => {
         this.props.toggleIsFetching(false)
         this.props.setUsers(data.items)
