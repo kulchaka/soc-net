@@ -8,7 +8,6 @@ import {
   toggleIsFetching,
   unfollow,
 } from "../../redux/usersReducer";
-import * as axios from "axios";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
 import {getUserAPI} from "../../API/API";
@@ -16,7 +15,7 @@ import {getUserAPI} from "../../API/API";
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true)
-    getUserAPI()
+    getUserAPI(this.props.currentPage, this.props.pageSize)
       .then(data => {
         this.props.toggleIsFetching(false)
         this.props.setUsers(data.items)
@@ -27,12 +26,10 @@ class UsersContainer extends React.Component {
   onPageChanged = (currentPage) => {
     this.props.setCurrentPage(currentPage)
     this.props.toggleIsFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    })
-      .then(response => {
+   getUserAPI(currentPage, this.props.pageSize)
+      .then(data => {
         this.props.toggleIsFetching(false)
-        this.props.setUsers(response.data.items)
+        this.props.setUsers(data.items)
       })
   }
 
