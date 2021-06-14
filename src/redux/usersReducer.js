@@ -12,7 +12,7 @@ const initState = {
   totalUserCount: 0,
   currentPage: 1,
   isFetching: false,
-  followingInProgress: false
+  followingInProgress: [17677]
 }
 
 const usersReducer = (state = initState, action) => {
@@ -56,7 +56,8 @@ const usersReducer = (state = initState, action) => {
       }
       case TOGGLE_FOLLOWING:
       return {
-        ...state, followingInProgress: action.isFetching
+        ...state,
+        followingInProgress: action.isFetching
       }
     default:
       return state;
