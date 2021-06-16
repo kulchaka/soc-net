@@ -120,7 +120,6 @@ export const getUserThunkCreator = (currentPage, pageSize) => {
     dispatch(toggleIsFetching(true))
     usersAPI.getUsers(currentPage, pageSize)
       .then(data => {
-        dispatch(setCurrentPage(currentPage))
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items))
         dispatch(setTotalCount(data.totalCount > 200 ? 199 : data.totalCount))

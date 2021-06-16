@@ -3,14 +3,11 @@ import {connect} from "react-redux";
 import {
   follow, getUserThunkCreator,
   setCurrentPage,
-  setTotalCount,
-  setUsers,
-  toggleIsFetching, toggleIsFollowing,
+  toggleIsFollowing,
   unfollow,
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
-import {usersAPI} from "../../API/API";
 
 
 class UsersContainer extends React.Component {
@@ -31,8 +28,7 @@ class UsersContainer extends React.Component {
   onPageChanged = (currentPage) => {
 
     this.props.getUserThunkCreator(currentPage, this.props.pageSize)
-
-    // this.props.setCurrentPage(currentPage)
+    this.props.setCurrentPage(currentPage)
     // this.props.toggleIsFetching(true)
     // usersAPI.getUsers(currentPage, this.props.pageSize)
     //   .then(data => {
@@ -83,10 +79,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
   setCurrentPage,
-  setTotalCount,
-  toggleIsFetching,
   toggleIsFollowing,
   getUserThunkCreator
 })(UsersContainer)
