@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-  follow,
+  follow, getUserThunkCreator,
   setCurrentPage,
   setTotalCount,
   setUsers,
@@ -15,13 +15,7 @@ import {usersAPI} from "../../API/API";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true)
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-      .then(data => {
-        this.props.toggleIsFetching(false)
-        this.props.setUsers(data.items)
-        this.props.setTotalCount(data.totalCount > 200 ? 199 : data.totalCount)
-      })
+    this.props.getUserThunkCreator(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = (currentPage) => {
@@ -80,6 +74,7 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   setTotalCount,
   toggleIsFetching,
-  toggleIsFollowing
+  toggleIsFollowing,
+  getUserThunkCreator
 })(UsersContainer)
 
