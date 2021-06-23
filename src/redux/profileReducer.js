@@ -1,3 +1,6 @@
+import {usersAPI} from "../API/API";
+import {setUserDataAC} from "./auth-reducer";
+
 const ADD_POST = 'ADD-POST';
 const POST_UPDATE = 'POST-UPDATE';
 const SET_PROFILE = 'SET-PROFILE';
@@ -58,5 +61,13 @@ export const updateNewPostTextActionCreator = (text) => ({
   }
 );
 export const setUserProfileActionCreator = (profile) => ({type: SET_PROFILE, profile});
+
+// Thunk
+export const getUserProfileThunk = (userID) => (dispatch) => {
+  return usersAPI.getProfile(userID)
+    .then(response => {
+      dispatch(setUserProfileActionCreator(response.data))
+    })
+}
 
 export default profileReducer;

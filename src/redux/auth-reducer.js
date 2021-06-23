@@ -1,3 +1,6 @@
+import {usersAPI} from "../API/API";
+import {toggleIsFollowing, unfollow} from "./usersReducer";
+
 const SET_USER_DATA = 'SET_USER_DATA'
 
 const initState = {
@@ -21,5 +24,17 @@ const authReducer = (state = initState, action) => {
 }
 
 export const setUserDataAC = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}})
+
+
+
+export const loginThunk = (dispatch) => {
+    usersAPI.loginUser()
+      .then(data => {
+        if (data.resultCode === 0) {
+          const {id, login, email} = data.data
+          dispatch(setUserDataAC(id, email, login))
+        }
+      })
+}
 
 export default authReducer
