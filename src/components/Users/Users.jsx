@@ -2,7 +2,6 @@ import React from "react";
 import userLogo from '../../assets/img/logo.png'
 import s from './Users.module.css'
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../API/API";
 
 
 const Users = (props) => {
@@ -39,27 +38,16 @@ const Users = (props) => {
               </NavLink>
               {
                 u.followed
-                  ? <button className={s.button} disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                    props.toggleIsFollowing(true, u.id)
-                    usersAPI.unfollowUser(u.id)
-                      .then(data => {
-                        if (data.resultCode === 0) {
-                          props.unfollow(u.id)
-                        }
-                        props.toggleIsFollowing(false, u.id)
-                      })
-
-                  }}>UNFOLLOW</button>
-                  : <button className={s.button} disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                    props.toggleIsFollowing(true, u.id)
-                    usersAPI.followUser(u.id)
-                      .then(data => {
-                        if (data.resultCode === 0) {
-                          props.follow(u.id)
-                        }
-                        props.toggleIsFollowing(false, u.id)
-                      });
-                  }}>FOLLOW</button>
+                  ? <button
+                    className={s.button}
+                    disabled={props.followingInProgress.some(id => id === u.id)}
+                    onClick={() => {props.unfollowThunk(u.id)}
+                  }>UNFOLLOW</button>
+                  : <button
+                    className={s.button}
+                    disabled={props.followingInProgress.some(id => id === u.id)}
+                    onClick={() => {props.followThunk(u.id)}
+                    }>FOLLOW</button>
               }
 
             </div>

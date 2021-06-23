@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-  follow, getUserThunkCreator,
+  followThunk, getUserThunkCreator,
   setCurrentPage,
   toggleIsFollowing,
-  unfollow,
+  unfollowThunk,
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
@@ -48,9 +48,8 @@ class UsersContainer extends React.Component {
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
           users={this.props.users}
-          unfollow={this.props.unfollow}
-          follow={this.props.follow}
-          toggleIsFollowing={this.props.toggleIsFollowing}
+          unfollowThunk={this.props.unfollowThunk}
+          followThunk={this.props.followThunk}
           followingInProgress={this.props.followingInProgress}
         />
       </>
@@ -77,8 +76,8 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-  follow,
-  unfollow,
+  followThunk,
+  unfollowThunk,
   setCurrentPage,
   toggleIsFollowing,
   getUserThunkCreator

@@ -127,5 +127,31 @@ export const getUserThunkCreator = (currentPage, pageSize) => {
   }
 }
 
+export const followThunk = (userID) => {
+  return (dispatch) => {
+    dispatch(toggleIsFollowing(true, userID))
+    usersAPI.followUser(userID)
+      .then(data => {
+        if (data.resultCode === 0) {
+          dispatch(follow(userID))
+        }
+        dispatch(toggleIsFollowing(false, userID))
+      });
+  }
+}
+
+export const unfollowThunk = (userID) => {
+  return (dispatch) => {
+    dispatch(toggleIsFollowing(true, userID))
+    usersAPI.unfollowUser(userID)
+      .then(data => {
+        if (data.resultCode === 0) {
+          dispatch(unfollow(userID))
+        }
+        dispatch(toggleIsFollowing(false, userID))
+      });
+  }
+}
+
 export default usersReducer
 
