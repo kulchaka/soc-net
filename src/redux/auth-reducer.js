@@ -1,4 +1,4 @@
-import {usersAPI} from "../API/API";
+import {authMe, usersAPI} from "../API/API";
 import {toggleIsFollowing, unfollow} from "./usersReducer";
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -27,14 +27,14 @@ export const setUserDataAC = (id, email, login) => ({type: SET_USER_DATA, data: 
 
 
 
-export const loginThunk = (dispatch) => {
-    usersAPI.loginUser()
-      .then(data => {
-        if (data.resultCode === 0) {
-          const {id, login, email} = data.data
-          dispatch(setUserDataAC(id, email, login))
-        }
-      })
+export const loginThunk = () => (dispatch) => {
+  authMe.me()
+    .then(response => {
+      if (response.data.resultCode === 0) {
+        const {id, login, email} = response.data.data
+        dispatch(setUserDataAC(id, email, login))
+      }
+    })
 }
 
 export default authReducer

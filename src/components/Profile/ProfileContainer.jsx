@@ -15,11 +15,6 @@ class ProfileContainer extends React.Component{
       userID = 2
     }
     this.props.getUserProfileThunk(userID)
-    // usersAPI.getProfile(userID)
-    //   .then(response => {
-    //     console.log(response)
-    //     this.props.setUserProfileActionCreator(response.data)
-    //   })
   }
 
   render() {
