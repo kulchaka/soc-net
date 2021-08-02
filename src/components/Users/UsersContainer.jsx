@@ -8,6 +8,7 @@ import {
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
+import withAuthRedirect from "../../HOC/withAuthRedirect";
 
 
 class UsersContainer extends React.Component {
@@ -22,7 +23,7 @@ class UsersContainer extends React.Component {
 
   render() {
     return (
-      <> 
+      <>
         {this.props.isFetching ? <SpinnerLoading/> : null}
         <Users
           isLoader={this.props.isFetching}
@@ -57,6 +58,8 @@ const mapStateToProps = (state) => {
   }
 }
 
+let withRedirect = withAuthRedirect(UsersContainer)
+
 
 export default connect(mapStateToProps, {
   followThunk,
@@ -64,5 +67,5 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   toggleIsFollowing,
   getUserThunkCreator
-})(UsersContainer)
+})(withRedirect)
 
