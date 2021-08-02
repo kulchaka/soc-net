@@ -1,5 +1,4 @@
-import {authMe, usersAPI} from "../API/API";
-import {toggleIsFollowing, unfollow} from "./usersReducer";
+import {authMe} from "../API/API";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -23,10 +22,11 @@ const authReducer = (state = initState, action) => {
   }
 }
 
+//Action Creators
 export const setUserDataAC = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}})
 
 
-
+//Thunk
 export const loginThunk = () => (dispatch) => {
   authMe.me()
     .then(response => {

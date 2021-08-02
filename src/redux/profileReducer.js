@@ -1,5 +1,4 @@
 import {usersAPI} from "../API/API";
-import {setUserDataAC} from "./auth-reducer";
 
 const ADD_POST = 'ADD-POST';
 const POST_UPDATE = 'POST-UPDATE';
@@ -54,6 +53,7 @@ const profileReducer = (state = initState, action) => {
   }
 }
 
+//Action Creators
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) => ({
     type: POST_UPDATE,
