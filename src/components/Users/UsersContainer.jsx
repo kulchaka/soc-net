@@ -9,6 +9,7 @@ import {
 import Users from "./Users";
 import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
 import withAuthRedirect from "../../HOC/withAuthRedirect";
+import {compose} from "redux";
 
 
 class UsersContainer extends React.Component {
@@ -58,14 +59,22 @@ const mapStateToProps = (state) => {
   }
 }
 
-let withRedirect = withAuthRedirect(UsersContainer)
+// compose(connect(mapStateToProps, {
+//   followThunk,
+//   unfollowThunk,
+//   setCurrentPage,
+//   toggleIsFollowing,
+//   getUserThunkCreator
+// }), withAuthRedirect)(UsersContainer)
+//
+// let withRedirect = withAuthRedirect(UsersContainer)
 
 
-export default connect(mapStateToProps, {
+export default compose(connect(mapStateToProps, {
   followThunk,
   unfollowThunk,
   setCurrentPage,
   toggleIsFollowing,
   getUserThunkCreator
-})(withRedirect)
+}), withAuthRedirect)(UsersContainer)
 
