@@ -6,7 +6,7 @@ class ProfileStatus extends Component {
     editMode: false
   }
 
-  activateMode() {
+  activateMode = () => {
     // this.state.editMode = true
     // this.forceUpdate()
     this.setState({
@@ -14,7 +14,7 @@ class ProfileStatus extends Component {
     })
   }
 
-  deactivateMode() {
+  deactivateMode = () => {
     this.setState({
       editMode: false
     })
@@ -26,14 +26,14 @@ class ProfileStatus extends Component {
         {
           !this.state.editMode &&
           <div>
-            <span onDoubleClick={this.activateMode.bind(this)}>{this.props.status}</span>
+            <span onDoubleClick={this.activateMode}>{this.props.status}</span>
           </div>
         }
         {
           this.state.editMode &&
           <div>
             <span>
-              <input onBlur={this.deactivateMode.bind(this)} type="text" value={this.props.status}/>
+              <input autoFocus={true} onBlur={this.deactivateMode} type="text" value={this.props.status}/>
             </span>
           </div>
         }
